@@ -27,7 +27,13 @@ const form = document.getElementById('contact-form');
     }).then(
         function(response) {
             // Success
-            alert('Message sent successfully!');
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Message sent successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
             
             // Reset form
             form.reset();
@@ -39,7 +45,14 @@ const form = document.getElementById('contact-form');
         function(error) {
             // Error
             console.log('Failed...', error);
-            alert('Failed to send message. Please try again.');
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Failed to send message. Please try again.",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            
             
             // Reset button
             submitButton.textContent = 'Send';

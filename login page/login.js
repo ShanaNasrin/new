@@ -12,37 +12,28 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
   const { data, error } = await supabase
   .from('register')
-  .select()
+  .select('*')
   .eq('email',email)
-  .eq('password',password);
+  .eq('password',password)
+  .single();
 
   // Handle errors and success
-  if (error) {
-    console.error("Error fetching user:", error);
+  if (error || !data) {
     Swal.fire({
       position: "center",
       icon: "error",
-      title: "Login failed"+ error.message,
+      title: "Invalid email or password",
       showConfirmButton: false,
       timer: 1500
     });
-} else if (data.length === 0) {
-  console.log("User not registered");
-  Swal.fire({
-    position: "center",
-    icon: "error",
-    title: "Login failed",
-    showConfirmButton: false,
-    timer: 1500
-  });
-  document.getElementById('loginForm').reset();
-}
-else {
+    alert('Invalid email or password');
+    
+}else {
     console.log("Login success:", data);
     Swal.fire({
       position: "center",
       icon: "success",
-      title: "Login successfully",
+      title: "Your work has been saved",
       showConfirmButton: false,
       timer: 1500
     });
@@ -50,5 +41,5 @@ else {
 
 }
 
-
+document.getElementById('loginForm').reset();
 });

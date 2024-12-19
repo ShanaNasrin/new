@@ -28,7 +28,13 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         alert("Registration failed: " + error.message);
     } else {
         console.log("User registered:", data);
-        alert("Registration successful!");
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Registration successfull!",
+            showConfirmButton: false,
+            timer: 1500
+          });
         document.getElementById('registerForm').reset();
     }
 });
