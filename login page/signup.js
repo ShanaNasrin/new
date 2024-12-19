@@ -29,5 +29,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     } else {
         console.log("User registered:", data);
         alert("Registration successful!");
+        document.getElementById('registerForm').reset();
     }
 });

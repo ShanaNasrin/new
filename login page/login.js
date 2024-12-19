@@ -28,6 +28,7 @@ else {
     console.log("Login success:", data);
     alert("Login successfully!");
     window.location.href = '../get-in-touch.html/demo.html';
+    
 }
 
 
