@@ -19,15 +19,33 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   // Handle errors and success
   if (error) {
     console.error("Error fetching user:", error);
-    alert("Login failed: " + error.message);
+    Swal.fire({
+      position: "center",
+      icon: "error",
+      title: "Login failed"+ error.message,
+      showConfirmButton: false,
+      timer: 1500
+    });
 } else if (data.length === 0) {
   console.log("User not registered");
-  alert("Not Registered.");
+  Swal.fire({
+    position: "center",
+    icon: "error",
+    title: "Login failed",
+    showConfirmButton: false,
+    timer: 1500
+  });
   document.getElementById('loginForm').reset();
 }
 else {
     console.log("Login success:", data);
-    alert("Login successfully!");
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Login successfully",
+      showConfirmButton: false,
+      timer: 1500
+    });
     window.location.href = '../get-in-touch.html/demo.html';
 
 }
