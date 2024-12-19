@@ -20,7 +20,11 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   if (error) {
     console.error("Error fetching user:", error);
     alert("Login failed: " + error.message);
-} else {
+} else if (data.length === 0) {
+  console.log("User not registered");
+  alert("Not Registered.");
+}
+else {
     console.log("Login success:", data);
     alert("Login successfully!");
     window.location.href = '../get-in-touch.html/demo.html';
