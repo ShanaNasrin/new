@@ -12,36 +12,25 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
   const { data, error } = await supabase
   .from('register')
-  .select('*')
+  .select('email,password')
   .eq('email',email)
   .eq('password',password)
   .single();
+ 
+  
+  console.log('All Users:', data);
 
   // Handle errors and success
-  if (!error || data) {
+  if (error || !data) {
+    alert('Invalid email or password');
+    
+}
+else {
     console.log("Login success:", data);
-    Swal.fire({
-      position: "center",
-      icon: "success",
-      title: "Your work has been saved",
-      showConfirmButton: false,
-      timer: 1500
-    });
    
     window.location.href = '../get-in-touch.html/demo.html';
-    
-}else {
-  Swal.fire({
-    position: "center",
-    icon: "error",
-    title: "Invalid email or password",
-    showConfirmButton: false,
-    timer: 1500
-  });
-   
-   
 
 }
 
-document.getElementById('loginForm').reset();
+
 });
