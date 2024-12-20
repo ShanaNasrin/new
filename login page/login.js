@@ -26,7 +26,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
       showConfirmButton: false,
       timer: 1500
     });
-    alert('Invalid email or password');
+    
     
 }else {
     console.log("Login success:", data);
