@@ -10,6 +10,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   // Get form data
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
+  const errorMessageDiv = document.getElementById('error-message');
   
   const { data, error } = await supabase
   .from('register')
@@ -24,7 +25,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
   // Handle errors and success
   if (error || !data) {
-    alert('Invalid email or password');
+    errorMessageDiv.style.display = 'block';
+    errorMessageDiv.textContent = 'Invalid email or password.';
     
 }
 else {
