@@ -25,7 +25,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
   // Handle errors and success
   if (error || !data) {
-    errorMessageDiv.style.display = 'block';
+    errorMessageDiv.style.display = 'inline';
     errorMessageDiv.textContent = 'Invalid email or password.';
     
 }
