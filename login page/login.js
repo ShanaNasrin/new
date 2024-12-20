@@ -18,17 +18,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   .single();
 
   // Handle errors and success
-  if (error || !data) {
-    Swal.fire({
-      position: "center",
-      icon: "error",
-      title: "Invalid email or password",
-      showConfirmButton: false,
-      timer: 1500
-    });
-    
-    
-}else {
+  if (!error || data) {
     console.log("Login success:", data);
     Swal.fire({
       position: "center",
@@ -37,7 +27,19 @@ document.getElementById('loginForm').addEventListener('submit', async function (
       showConfirmButton: false,
       timer: 1500
     });
+   
     window.location.href = '../get-in-touch.html/demo.html';
+    
+}else {
+  Swal.fire({
+    position: "center",
+    icon: "error",
+    title: "Invalid email or password",
+    showConfirmButton: false,
+    timer: 1500
+  });
+   
+   
 
 }
 
